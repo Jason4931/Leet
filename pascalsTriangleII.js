@@ -13,4 +13,3 @@ var getRow = function(rowIndex) {
   }
   return result.pop();
 };
-console.log(getRow(5))

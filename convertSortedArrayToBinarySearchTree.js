@@ -14,4 +14,3 @@ var sortedArrayToBST = function (nums) {
   }
   return root;
 };
-console.log(sortedArrayToBST([-10, -3, 0, 5, 9]));

@@ -1,23 +1,17 @@
-class TreeNode {
-  constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
-  }
+function TreeNode(val, left, right) {
+  this.val = (val===undefined ? 0 : val)
+  this.left = (left===undefined ? null : left)
+  this.right = (right===undefined ? null : right)
 }
-var maxDepth = function (root) {
+var countNodes = function (root) {
   let result = 0;
-  let max = 0;
   let current = root;
   let stack = [];
   let dir = 0;
   while (current) {
+    result++;
     if (current.left && current.right && dir == 0) {
-      stack.push([current, max])
-    }
-    max++;
-    if (max > result) {
-      result = max;
+      stack.push(current)
     }
     if (dir == 0) {
       if (current.left) {
@@ -26,9 +20,7 @@ var maxDepth = function (root) {
         current = current.right;
       } else {
         if (stack.length > 0) {
-          let popped = stack.pop();
-          current = popped[0];
-          max = popped[1];
+          current = stack.pop();
           dir = 1;
         } else {
           break;
@@ -37,6 +29,7 @@ var maxDepth = function (root) {
     } else {
       dir = 0;
       if (current.right) {
+        result--;
         current = current.right;
       }
     }
